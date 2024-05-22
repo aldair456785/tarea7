@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora de promedio de prácticas</title>
+<link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+<h2>Calculadora de promedio de prácticas</h2>
+
+<label for="practica1">Nota de la práctica 1:</label>
+<input type="number" id="practica1">
+
+<label for="practica2">Nota de la práctica 2:</label>
+<input type="number" id="practica2">
+
+<label for="practica3">Nota de la práctica 3:</label>
+<input type="number" id="practica3">
+
+<label for="practica4">Nota de la práctica 4:</label>
+<input type="number" id="practica4">
+
+<button onclick="calcularPromedio()">Calcular promedio</button>
+
+<p id="nota-eliminada"></p>
+<p id="promedio"></p>
+
+<script>
+function calcularPromedio() {
+  var practica1 = parseFloat(document.getElementById("practica1").value);
+  var practica2 = parseFloat(document.getElementById("practica2").value);
+  var practica3 = parseFloat(document.getElementById("practica3").value);
+  var practica4 = parseFloat(document.getElementById("practica4").value);
+
+  var notas = [practica1, practica2, practica3, practica4];
+  var notaEliminada = Math.min(...notas); // Encuentra la nota mínima
+  var indiceNotaEliminada = notas.indexOf(notaEliminada);
+  notas.splice(indiceNotaEliminada, 1); // Elimina la nota mínima del arreglo
+
+  var promedio = (notas.reduce((a, b) => a + b, 0)) / 3; // Calcula el promedio de las tres notas restantes
+
+  document.getElementById("nota-eliminada").innerHTML = "Nota eliminada: " + notaEliminada;
+  document.getElementById("promedio").innerHTML = "Promedio de prácticas: " + promedio.toFixed(2);
+}
+</script>
+
+</body>
+</html>

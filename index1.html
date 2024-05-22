@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora de precios de llantas</title>
+<link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+<h2>Calculadora de precios de llantas</h2>
+
+<label for="cantidad-llantas">Cantidad de llantas compradas:</label>
+<input type="number" id="cantidad-llantas" min="1">
+
+<button onclick="calcularPrecio()">Calcular precio</button>
+
+<p id="precio-por-unidad"></p>
+<p id="precio-total"></p>
+
+<script>
+function calcularPrecio() {
+  var cantidadLlantas = parseInt(document.getElementById("cantidad-llantas").value);
+  var precioUnidad1 = 30000;
+  var precioUnidad2 = 25000;
+  var precioUnidad3 = 20000;
+  var precioTotal;
+  var precioPorUnidad;
+
+  if (cantidadLlantas < 5) {
+    precioTotal = cantidadLlantas * precioUnidad1;
+    precioPorUnidad = precioUnidad1;
+  } else if (cantidadLlantas >= 5 && cantidadLlantas <= 10) {
+    precioTotal = cantidadLlantas * precioUnidad2;
+    precioPorUnidad = precioUnidad2;
+  } else {
+    precioTotal = cantidadLlantas * precioUnidad3;
+    precioPorUnidad = precioUnidad3;
+  }
+
+  document.getElementById("precio-por-unidad").innerHTML = "Precio por unidad de llanta: $" + precioPorUnidad;
+  document.getElementById("precio-total").innerHTML = "Total a pagar por " + cantidadLlantas + " llantas: $" + precioTotal;
+}
+</script>
+
+</body>
+</html>

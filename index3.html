@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora de precio de manzanas</title>
+<link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+<h2>Calculadora de precio de manzanas</h2>
+
+<label for="kilos">Cantidad de kilos de manzanas comprados:</label>
+<input type="number" id="kilos">
+
+<button onclick="calcularPrecio()">Calcular precio</button>
+
+<p id="precio-total"></p>
+
+<script>
+function calcularPrecio() {
+  var kilos = parseFloat(document.getElementById("kilos").value);
+  var precioPorKilo = 5;  // Precio por kilo de manzanas en dólares
+  var descuento = 0;  // Porcentaje de descuento inicial
+
+  if (kilos <= 2) {
+    descuento = 0;
+  } else if (kilos > 2 && kilos <= 5) {
+    descuento = 10;
+  } else if (kilos > 5 && kilos <= 10) {
+    descuento = 15;
+  } else {
+    descuento = 20;
+  }
+
+  var precioTotal = kilos * precioPorKilo * (1 - descuento / 100);
+
+  document.getElementById("precio-total").innerHTML = "Total a pagar por " + kilos + " kilos de manzanas: $" + precioTotal.toFixed(2);
+}
+</script>
+
+</body>
+</html>

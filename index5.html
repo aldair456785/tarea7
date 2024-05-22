@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Detector de anemia</title>
+<link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+<h2>Detector de anemia</h2>
+
+<label for="edad">Edad (en años):</label>
+<input type="number" id="edad">
+
+<label for="sexo">Sexo:</label>
+<select id="sexo">
+  <option value="masculino">Masculino</option>
+  <option value="femenino">Femenino</option>
+</select>
+
+<label for="hemoglobina">Nivel de hemoglobina (en g%):</label>
+<input type="number" id="hemoglobina">
+
+<button onclick="detectarAnemia()">Detectar anemia</button>
+
+<p id="resultado"></p>
+
+<script>
+function detectarAnemia() {
+  var edad = parseInt(document.getElementById("edad").value);
+  var sexo = document.getElementById("sexo").value;
+  var hemoglobina = parseFloat(document.getElementById("hemoglobina").value);
+
+  var resultado = "";
+
+  if (edad <= 1) {
+    if (hemoglobina < 13 && sexo === "masculino") {
+      resultado = "Positivo";
+    } else if (hemoglobina < 13 && sexo === "femenino") {
+      resultado = "Positivo";
+    } else {
+      resultado = "Negativo";
+    }
+  } else if (edad > 1 && edad <= 6) {
+    if (hemoglobina < 10 && sexo === "masculino") {
+      resultado = "Positivo";
+    } else if (hemoglobina < 10 && sexo === "femenino") {
+      resultado = "Positivo";
+    } else {
+      resultado = "Negativo";
+    }
+  } else if (edad > 6 && edad <= 12) {
+    if (hemoglobina < 11 && sexo === "masculino") {
+      resultado = "Positivo";
+    } else if (hemoglobina < 11 && sexo === "femenino") {
+      resultado = "Positivo";
+    } else {
+      resultado = "Negativo";
+    }
+  } else if (edad > 12 && edad <= 60) {
+    if (hemoglobina < 13 && sexo === "masculino") {
+      resultado = "Positivo";
+    } else if (hemoglobina < 12 && sexo === "femenino") {
+      resultado = "Positivo";
+    } else {
+      resultado = "Negativo";
+    }
+  } else if (edad > 60) {
+    if (hemoglobina < 13 && sexo === "masculino") {
+      resultado = "Positivo";
+    } else if (hemoglobina < 12 && sexo === "femenino") {
+      resultado = "Positivo";
+    } else {
+      resultado = "Negativo";
+    }
+  }
+
+  document.getElementById("resultado").innerHTML = "Resultado de la prueba: " + resultado;
+}
+</script>
+
+</body>
+</html>
